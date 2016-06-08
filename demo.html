@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>UXLoading Demo</title>
+		<link href="uxloading.css" rel="stylesheet" />
+		<style type="text/css">
+			html, body {
+				margin: 0;
+				padding: 0;
+				background-color: #333;
+				font-family: Lato, serif;
+			}
+
+			.wrapper {
+				max-width: 60%;
+				margin: 50px auto;
+				padding: 20px;
+				background-color: #fff;
+				border: 2px solid #000;
+				border-radius: 5px;
+			}
+
+			.background {
+				border: 3px solid #333;
+				height: 200px;
+				line-height: 200px;
+				text-align: center;
+			}
+
+			.background, [role="button"] {
+				-webkit-transition: all 0.2s ease;
+				-moz-transition: all 0.2s ease;
+				-ms-transition: all 0.2s ease;
+				-o-transition: all 0.2s ease;
+				transition: all 0.2s ease;
+			}
+
+			[role="button"] {
+				display: block;
+				text-decoration: none;
+				text-align: center;
+				background-color: #207f00;
+				color: #fff;
+				border-radius: 3px;
+				padding: 15px 20px;
+				text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.6);
+				box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.35),
+					inset 0px -3px 1em rgba(0, 0, 0, 0.35),
+					inset 0px 3px 1em rgba(255, 255, 255, 0.35);
+			}
+
+			[role="button"]:hover {
+				background-color: #009900;
+			}
+
+			[role="button"]:active {
+				-moz-transform: scale(0.93);
+				-webkit-transform: scale(0.93);
+				-o-transform: scale(0.93);
+				-ms-transform: scale(0.93);
+				transform: scale(0.93);
+			}
+		</style>
+	</head>
+	<body>
+
+		<div class="wrapper">
+			<div class="background">
+				WORD
+			</div>
+			<p>&nbsp;</p>
+			<a href="#change" role="button">Change Background Colour</a>
+		</div>
+
+		<script type="text/javascript" src="uxloading.js"></script>
+		<script type="text/javascript">
+			// Immediatately invoked function expression.
+			// Used to prevent polution of window namespace
+			(function() {
+				var btn = document.querySelector('[role="button"]');
+				var bg = document.querySelector('.background');
+				btn.addEventListener('click', function(evt) {
+					// Show the user we are loading *something*
+					UXLoading.show('html', 'Loading', 'Requesting a new background colour...');
+					// Simulate delay
+					setTimeout(function() {
+						var colours = ['blue', 'green', 'cyan', 'yellow', 'red', 'aliceblue'];
+						var colour = colours[Math.round(Math.random() * (colours.length - 1))];
+						bg.style.backgroundColor = colour;
+
+						UXLoading.hide('html');
+					}, 1000);
+
+					// Prevent hash changing
+					if (evt.preventDefault) evt.preventDefault();
+				});
+			})();
+		</script>
+	</body>
+</html>
