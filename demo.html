@@ -79,13 +79,21 @@
 			(function() {
 				var btn = document.querySelector('[role="button"]');
 				var bg = document.querySelector('.background');
+
+				var colours = ['blue', 'green', 'cyan', 'yellow', 'red'];
+				var colour = colours[Math.round(Math.random() * (colours.length - 1))];
+				var newColour = colour;
+
 				btn.addEventListener('click', function(evt) {
 					// Show the user we are loading *something*
 					UXLoading.show('.background', 'Loading', 'Requesting a new background colour...');
+					do {
+						newColour = colours[Math.round(Math.random() * (colours.length - 1))];
+					} while (newColour === colour)
+					colour = newColour;
+
 					// Simulate delay
 					setTimeout(function() {
-						var colours = ['blue', 'green', 'cyan', 'yellow', 'red', 'aliceblue'];
-						var colour = colours[Math.round(Math.random() * (colours.length - 1))];
 						bg.style.backgroundColor = colour;
 
 						UXLoading.hide('.background');
