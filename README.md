@@ -7,6 +7,8 @@ Plain JS, no dependencies.
 
 IE10+, Modern browser compatible.
 
+![Screenshot](https://github.com/davehax/UXLoading/blob/master/example.png "Screenshot")
+
 ## Usage
 
 UXLoading.**show**(_selector_ [ , _title_ = 'Loading', _message_ = '' ]);
