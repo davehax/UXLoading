@@ -81,14 +81,14 @@
 				var bg = document.querySelector('.background');
 				btn.addEventListener('click', function(evt) {
 					// Show the user we are loading *something*
-					UXLoading.show('html', 'Loading', 'Requesting a new background colour...');
+					UXLoading.show('.background', 'Loading', 'Requesting a new background colour...');
 					// Simulate delay
 					setTimeout(function() {
 						var colours = ['blue', 'green', 'cyan', 'yellow', 'red', 'aliceblue'];
 						var colour = colours[Math.round(Math.random() * (colours.length - 1))];
 						bg.style.backgroundColor = colour;
 
-						UXLoading.hide('html');
+						UXLoading.hide('.background');
 					}, 1000);
 
 					// Prevent hash changing
