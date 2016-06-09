@@ -30,7 +30,7 @@ UXLoading.**hide**(_selector_);
 UXLoading.hide('.ajax-component');
 ```
 
-- selector - Mandatary. Must be a valid CSS selector
+- selector - Mandatory. Must be a valid CSS selector
 
 ***
 UXLoading.**hideAll**();
